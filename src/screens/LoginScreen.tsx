@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTheme } from '../contexts/ThemeContext';
 
 type Props = NativeStackScreenProps<any, 'Login'>;
 
 export default function LoginScreen({ navigation }: Props) {
+  const { theme } = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -56,9 +58,13 @@ export default function LoginScreen({ navigation }: Props) {
         secureTextEntry
       />
 
-      <Button title="Login" onPress={handleLogin} />
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
       <View style={{ height: 12 }} />
-      <Button title="Create account" onPress={() => navigation.navigate('SignUp')} />
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
+        <Text style={styles.buttonText}>Create account</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -75,6 +81,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 24,
     textAlign: 'center',
+    color: '#8A2BE2',
   },
   input: {
     borderWidth: 1,
@@ -82,5 +89,17 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     marginBottom: 12,
+  },
+  button: {
+    backgroundColor: '#8A2BE2',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

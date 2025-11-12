@@ -26,10 +26,10 @@ export default function HomeScreen() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={[styles.card, theme === 'dark' ? styles.darkCard : styles.lightCard]}
+            style={[styles.card, { borderColor: theme === 'dark' ? '#fff' : '#000' }]}
             onPress={() => navigation.navigate('QueueScreen',{ shop:item })}
           >
-            <Text style={[styles.name, theme === 'dark' ? styles.darkText : styles.lightText]}>{item.name}</Text>
+            <Text style={styles.name}>{item.name}</Text>
           </TouchableOpacity>
         )}
       />
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 10,
     marginBottom: 12,
+    backgroundColor: '#8A2BE2',
+    borderWidth: 1,
   },
-  lightCard: { backgroundColor: '#f0f0f0' },
-  darkCard: { backgroundColor: '#333' },
-  name: { fontSize: 18, fontWeight: '500' },
+  name: { fontSize: 18, fontWeight: '500', color: '#fff' },
 });
