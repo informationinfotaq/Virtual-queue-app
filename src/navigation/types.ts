@@ -1,3 +1,5 @@
+export type Shop = { id: string; name: string; estWait: number };
+
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
@@ -5,7 +7,7 @@ export type RootStackParamList = {
   Home: undefined;
   Profile: undefined;
   Settings: undefined;
-  QueueScreen: { shop: { id: string; name: string; estWait: number } };
+  QueueScreen: { shop: Shop };
 };
 
 export type HomeTabParamList = {

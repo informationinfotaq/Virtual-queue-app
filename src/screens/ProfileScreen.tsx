@@ -2,13 +2,18 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/types';
 
 export default function ProfileScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // signing out will not automatically switch stacks here; you can handle onAuthStateChanged later
-      Alert.alert('Logged out');
+      // Navigate to Login screen after logout
+      navigation.replace('Login');
     } catch (e: any) {
       Alert.alert('Logout failed', e.message || 'Unknown');
     }
