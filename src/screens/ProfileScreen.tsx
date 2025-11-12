@@ -31,5 +31,7 @@ export default function ProfileScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16 },
-  title: { fontSize: 22, fontWeight: '700', marginBottom: 12 },
+  lightContainer: { backgroundColor: '#fff' },
+  darkContainer: { backgroundColor: '#121212' },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 , color: '#8A2BE2'},
 });
