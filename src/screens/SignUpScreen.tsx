@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebaseConfig';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { doc, setDoc } from 'firebase/firestore';
 

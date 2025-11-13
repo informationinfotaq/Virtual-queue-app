@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import { signOut } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth } from '../firebaseConfig';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';

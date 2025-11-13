@@ -15,21 +15,24 @@ const shops: Shop[] = [
 
 export default function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const { theme } = useTheme();
+  const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, theme === 'dark' ? styles.darkContainer : styles.lightContainer]}>
-      <Text style={[styles.title, theme === 'dark' ? styles.darkText : styles.lightText]}>Available Shops</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.title, { color: colors.primary }]}>Available Shops</Text>
 
       <FlatList
         data={shops}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={[styles.card, { borderColor: theme === 'dark' ? '#fff' : '#000' }]}
-            onPress={() => navigation.navigate('QueueScreen',{ shop:item })}
+            style={[styles.card, { borderColor: colors.border }]}
+            onPress={() => navigation.navigate('QueueScreen', { shop: item })}
           >
-            <Text style={styles.name}>{item.name}</Text>
+            <View style={[styles.gradient, { backgroundColor: colors.primary }]}>
+              <Text style={[styles.name, { color: colors.surface }]}>{item.name}</Text>
+              <Text style={[styles.estWait, { color: colors.surface }]}>Est. Wait: {item.estWait} min</Text>
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -39,17 +42,22 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
-  lightContainer: { backgroundColor: '#fff' },
-  darkContainer: { backgroundColor: '#121212' },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, color: '#8A2BE2' },
-  lightText: { color: '#000' },
-  darkText: { color: '#fff' },
+  title: { fontSize: 28, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
   card: {
-    padding: 16,
-    borderRadius: 10,
-    marginBottom: 12,
-    backgroundColor: '#8A2BE2',
+    borderRadius: 12,
+    marginBottom: 16,
     borderWidth: 1,
+    overflow: 'hidden',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-  name: { fontSize: 18, fontWeight: '500', color: '#fff' },
+  gradient: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  name: { fontSize: 20, fontWeight: '600', marginBottom: 4 },
+  estWait: { fontSize: 14, opacity: 0.9 },
 });

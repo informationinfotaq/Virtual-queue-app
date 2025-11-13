@@ -1,6 +1,7 @@
-# TODO for UI/UX Color Updates (Violet Theme)
+# TODO: Remove LinearGradient from Virtual Queue App
 
-- [ ] Update HomeScreen.tsx: Change shop card backgrounds to violet (#8A2BE2) with theme-aware text and borders for light/dark modes
-- [ ] Update QueueScreen.tsx: Change back button color to violet (#8A2BE2) and ensure theme compatibility
-- [ ] Update LoginScreen.tsx: Change title color to violet (#8A2BE2), update button colors to violet, and make styles theme-aware
-- [ ] Test the app in both light and dark modes to verify color visibility and consistency
+- [x] Edit src/screens/HomeScreen.tsx: Remove LinearGradient import, replace LinearGradient with View, update styles to use solid background color
+- [x] Edit src/screens/QueueScreen.tsx: Remove LinearGradient import, replace LinearGradient with TouchableOpacity, update styles to use solid background color
+- [x] Edit package.json: Remove "expo-linear-gradient" and "react-native-linear-gradient" dependencies
+- [x] Run npm install to update dependencies
+- [x] Test the app to ensure no errors and functionality works
